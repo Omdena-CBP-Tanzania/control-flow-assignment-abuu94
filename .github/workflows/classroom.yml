@@ -1,26 +1,52 @@
 name: Python Control Structures Assignment
 
-test_cases:
-  - name: Test while loop
-    setup: ""
-    run: "python3 tests/test_assignment.py TestControlStructures.test_while_loop"
-    input: ""
-    output: ""
+on: [push, pull_request]  #This event trigger was missing in the original file
 
-  - name: Test for loop with continue
-    setup: ""
-    run: "python3 tests/test_assignment.py TestControlStructures.test_for_loop_continue"
-    input: ""
-    output: ""
+jobs:
+  test:
+    runs-on: ubuntu-latest
 
-  - name: Test if-else statement
-    setup: ""
-    run: "python3 tests/test_assignment.py TestControlStructures.test_if_else"
-    input: ""
-    output: ""
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  - name: Test nested loops
-    setup: ""
-    run: "python3 tests/test_assignment.py TestControlStructures.test_nested_loops"
-    input: ""
-    output: ""
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          
+
+      - name: Run tests
+        run: |
+          python -m unittest discover -s tests -p "test_assignment.py"
+
+# name: Python Control Structures Assignment
+
+# test_cases:
+#   - name: Test while loop
+#     setup: ""
+#     run: "python3 tests/test_assignment.py TestControlStructures.test_while_loop"
+#     input: ""
+#     output: ""
+
+#   - name: Test for loop with continue
+#     setup: ""
+#     run: "python3 tests/test_assignment.py TestControlStructures.test_for_loop_continue"
+#     input: ""
+#     output: ""
+
+#   - name: Test if-else statement
+#     setup: ""
+#     run: "python3 tests/test_assignment.py TestControlStructures.test_if_else"
+#     input: ""
+#     output: ""
+
+#   - name: Test nested loops
+#     setup: ""
+#     run: "python3 tests/test_assignment.py TestControlStructures.test_nested_loops"
+#     input: ""
+#     output: ""
