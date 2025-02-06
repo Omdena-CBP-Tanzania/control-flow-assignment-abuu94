@@ -1,5 +1,5 @@
 import unittest
-
+from assignment import *
 class TestControlStructures(unittest.TestCase):
 
     def test_while_loop(self):
